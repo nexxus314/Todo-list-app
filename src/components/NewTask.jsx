@@ -1,16 +1,36 @@
 import React, { useState } from "react";
 import Cards from "./Cards";
 
-const NewTask = () => {
-  const [newTask, setnewTask] = useState({
+const NewTask = ({addTask,onClose}) => {
+  const [newTask, setNewTask] = useState({
     taskname: "",
     taskinfo: "",
   });
-  const handlechange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
 
-    setnewTask((values) => ({ ...values, [name]: value }));
+  const handleChange=(e)=>{
+
+    const { name, value } = e.target;
+  setNewTask((prev) => ({ ...prev, [name]: value }));
+  }
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    
+    const taskObject={
+      id:Date.now(),
+      taskname:newTask.taskname,
+      taskinfo:newTask.taskinfo,
+      completed:false,
+      
+
+    };
+
+
+
+    addTask(taskObject);
+
+    setNewTask({ taskname: "", taskinfo: "" });
+     onClose();
   };
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -18,13 +38,13 @@ const NewTask = () => {
         <h2 className="text-2xl text-indigo-800 text-center font-bold font-mono ">
           Add Your Tasks
         </h2>
-        <form className="flex flex-col items-center gap-6">
+        <form className="flex flex-col items-center gap-6" onSubmit={handleSubmit}>
           <input
             className="p-2 font-semibold outline-black shadow-2xl rounded-lg mt-10"
             type="text"
             name="taskname"
             value={newTask.taskname}
-            onChange={handlechange}
+            onChange={handleChange}
             placeholder="Task Name"
           />
           <input
@@ -32,7 +52,7 @@ const NewTask = () => {
             type="text"
             placeholder="Task Description"
             value={newTask.taskinfo}
-            onChange={handlechange}
+            onChange={handleChange}
             name="taskinfo"
           />
           <button

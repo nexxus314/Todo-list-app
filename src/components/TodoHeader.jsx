@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoHeader = () => {
+const TodoHeader = ({onNewTaskClick}) => {
   return (
     <>
     
@@ -14,7 +14,9 @@ const TodoHeader = () => {
    
     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
       
-        <button  className='text-white font-mono'>
+        <button onClick={onNewTaskClick}  className='text-white font-mono p-2 rounded-lg hover:shadow 2x1 hover:bg-indigo-500'
+        >
+          
           <img src="" alt="" />New Task</button>
       
       </div>
