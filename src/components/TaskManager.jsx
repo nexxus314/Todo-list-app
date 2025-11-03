@@ -7,8 +7,10 @@ import React from "react";
 
 const TaskManager = () => {
   let savedTasks = [];
+  //initialize the tasks array by none first
   try {
     const stored = localStorage.getItem("tasks");
+    //if there are any stored elements,- parse the stringified json
     savedTasks = stored ? JSON.parse(stored) : [];
     //here the json.parse converts the stored json.string into the normal array and it can be used to show the data 
   } catch (error) {
@@ -17,7 +19,8 @@ const TaskManager = () => {
   }
 
 
-  //throw and catch block since the error parsing storage kept spamming
+  //throw and catch block so that if data stored goes corrupted and it threw an error, we could catch it
+
   const [tasks, setTasks] = useState(savedTasks);
   const [showNewTask, setShowNewTask] = useState(false);
   //used to hide the newtask form so that it doesnt stay there
