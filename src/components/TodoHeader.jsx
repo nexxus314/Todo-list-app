@@ -56,8 +56,6 @@ const TodoHeader = ({setFilter,onNewTaskClick,currentFilter}) => {
           New Task</button>
       
       </div>
-    
-  
 </nav>
 
     </>

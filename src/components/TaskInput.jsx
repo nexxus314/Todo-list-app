@@ -29,9 +29,11 @@ const TaskInput = ({tasks,toggleTaskCompletion,deleteTask}) => {
            {task.taskinfo}
         </p>
 
+        <div className="flex flex-row gap-3">
+
             <input
               type="checkbox"
-              className="w-6 h-6 mt-3 mb-0 accent-indigo-500 cursor-pointer"
+              className="w-6 h-6 mt-6 accent-indigo-500 cursor-pointer"
               checked={task.completed}
               onChange={() => toggleTaskCompletion(task.id)}
             />
@@ -41,6 +43,7 @@ const TaskInput = ({tasks,toggleTaskCompletion,deleteTask}) => {
             >
              <IoMdTrash size={30} />
             </button>
+          </div>
           </div>
           
     </Cards>
