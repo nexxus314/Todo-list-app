@@ -10,15 +10,19 @@ const TaskManager = () => {
   try {
     const stored = localStorage.getItem("tasks");
     savedTasks = stored ? JSON.parse(stored) : [];
+    //here the json.parse converts the stored json.string into the normal array and it can be used to show the data 
   } catch (error) {
     console.error("Error parsing localStorage data:", error);
     savedTasks = [];
   }
+
+
+  //throw and catch block since the error parsing storage kept spamming
   const [tasks, setTasks] = useState(savedTasks);
   const [showNewTask, setShowNewTask] = useState(false);
   //used to hide the newtask form so that it doesnt stay there
   const [filter, setFilter] = useState("all");
-
+//.filter creates a new array with all the elements which passes the test
   const filteredTasks = tasks.filter((task) => {
     if (filter == "active") return !task.completed;
     if (filter == "completed") return task.completed;
@@ -46,6 +50,8 @@ const TaskManager = () => {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+  //here the [tasks] is a dependancy array and the code inside useeffect runs whenever the tasks is being changed
+  //and on top of that localstorage.setitem stores the "tasks" array into browser local storage in a json string format using stringify
 
   return (
     <>

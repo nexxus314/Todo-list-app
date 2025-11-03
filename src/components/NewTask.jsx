@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Cards from "./Cards";
-
+//use usestate with newTask
 const NewTask = ({addTask,onClose}) => {
   const [newTask, setNewTask] = useState({
     taskname: "",
@@ -12,6 +12,10 @@ const NewTask = ({addTask,onClose}) => {
     const { name, value } = e.target;
   setNewTask((prev) => ({ ...prev, [name]: value }));
   }
+
+  /*here in handleChange, the setnewtask carries taskname and taskinfo,
+  and here ... creates a new array and copies the previous tasks into the new array along with its value
+  recieved from the userinput*/
   const handleSubmit = (e) => {
 
     e.preventDefault();
@@ -23,8 +27,10 @@ const NewTask = ({addTask,onClose}) => {
       completed:false,
     };
 
-    addTask(taskObject);
+    //this taskobject contains the details about the task
 
+    addTask(taskObject);
+//calls the addtask func from taskmanager
     setNewTask({ taskname: "", taskinfo: "" });
      onClose();
   };

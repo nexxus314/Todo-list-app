@@ -3,7 +3,7 @@ import Cards from "./Cards";
 import { IoMdTrash } from "react-icons/io";
 
 const TaskInput = ({tasks,toggleTaskCompletion,deleteTask}) => {
-
+//displays this p if no of tasks is none
  if(!tasks || tasks.length==0){
   return (
     <div className="flex justify-center items-center h-screen">
@@ -13,8 +13,9 @@ const TaskInput = ({tasks,toggleTaskCompletion,deleteTask}) => {
  };
   
   return (
+    /*tasks.map loops throught the task as argument and then fills the dynamic spots inside the card*/
+
     <>
-    
     <div className="flex flex-row">
       {tasks.map((task)=>(
 
