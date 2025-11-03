@@ -16,7 +16,7 @@ const TaskInput = ({tasks,toggleTaskCompletion,deleteTask}) => {
     /*tasks.map loops throught the task as argument and then fills the dynamic spots inside the card*/
 
     <>
-    <div className="flex flex-row">
+    <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center">
       {tasks.map((task)=>(
 
          <Cards key={task.id} className="group">
