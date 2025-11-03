@@ -25,4 +25,15 @@ Tailwind CSS – Styling and layout
 
 Vite / Create React App – Development environment
 
+Screenshots: 
+## 📸 App Preview
+
+![To-Do App Screenshot](public/screenshots/Screenshot%20(101).png)
+
+![To-Do App Screenshot](public/screenshots/Screenshot%20(102).png)
+
+![To-Do App Screenshot](public/screenshots/Screenshot%20(103).png)
+
+![To-Do App Screenshot](public/screenshots/Screenshot%20(104).png)
+
 
