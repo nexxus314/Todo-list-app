@@ -57,12 +57,14 @@ const NewTask = ({addTask,onClose}) => {
             onChange={handleChange}
             name="taskinfo"
           />
+          <div className="flex justify-center sm:justify-end">
           <button
             type="submit"
             className="border-none font-semibold shadow-2xl text-xs text-white bg-indigo-400 p-3 rounded-lg font-mono hover:bg-indigo-800"
           >
             Add Task.
           </button>
+          </div>
         </form>
       </div>
     </div>
