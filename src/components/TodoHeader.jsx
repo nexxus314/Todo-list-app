@@ -48,12 +48,13 @@ const TodoHeader = ({setFilter,onNewTaskClick,currentFilter}) => {
           </button>
         </div>
 
-
+ <div className="flex justify-center sm:justify-end">
       
         <button onClick={onNewTaskClick}  className='text-white font-mono p-2 rounded-lg hover:shadow 2x1 hover:bg-indigo-500'
         >
           
           New Task</button>
+          </div>
       
       </div>
 </nav>
