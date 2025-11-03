@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoHeader = ({onNewTaskClick}) => {
+const TodoHeader = ({setFilter,onNewTaskClick,currentFilter}) => {
   return (
     <>
     
@@ -12,15 +12,51 @@ const TodoHeader = ({onNewTaskClick}) => {
           ToDo.</span>
     
    
-    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+    {/* Filter buttons */}
+        <div className="flex gap-2">
+          <button
+            onClick={() => setFilter("all")}
+            className={`p-2 rounded ${
+              currentFilter === "all"
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-200 text-black"
+            }`}
+          >
+            All
+          </button>
+
+          <button
+            onClick={() => setFilter("active")}
+            className={`p-2 rounded ${
+              currentFilter === "active"
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-200 text-black"
+            }`}
+          >
+            Active
+          </button>
+
+          <button
+            onClick={() => setFilter("completed")}
+            className={`p-2 rounded ${
+              currentFilter === "completed"
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-200 text-black"
+            }`}
+          >
+            Completed
+          </button>
+        </div>
+
+
       
         <button onClick={onNewTaskClick}  className='text-white font-mono p-2 rounded-lg hover:shadow 2x1 hover:bg-indigo-500'
         >
           
-          <img src="" alt="" />New Task</button>
+          New Task</button>
       
       </div>
-    </div>
+    
   
 </nav>
 

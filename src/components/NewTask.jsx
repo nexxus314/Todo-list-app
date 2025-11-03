@@ -21,11 +21,7 @@ const NewTask = ({addTask,onClose}) => {
       taskname:newTask.taskname,
       taskinfo:newTask.taskinfo,
       completed:false,
-      
-
     };
-
-
 
     addTask(taskObject);
 
