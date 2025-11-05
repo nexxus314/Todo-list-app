@@ -1,9 +1,26 @@
 import NewTask from "./NewTask";
 import TaskInput from "./TaskInput";
 import TodoHeader from "./TodoHeader";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 import React from "react";
+
+//reducer fn which takes the state and action as props/args 
+function taskReducer(state,action){
+
+  switch(action.type){
+    case 'ADD_TASK': return [...state,action.payload];
+    //... makes a new state array and adds the new action payload in it
+    case 'DELETE_TASK': return state.filter(task=>task.id!==action.payload);
+//filters out the task and if the actionpayload(id) is not what is inside the task array, it creates a new task array without that specific id of task
+  case 'TOGGLE_TASK': return  state.map(task=> task.id===action.payload?{...task,completed:!task.completed}:task);
+//loops/maps through the available task array and uses a ternary operation where if th id matches the payload, then its completed status is flipped and if it doesnt then its left without any change.
+  default:
+    return state;
+ 
+  }
+}
+//can group different if this-then that state changes into one reducer function which has multiple cases and the reducer decides what to do during a certain scenario
 
 const TaskManager = () => {
   let savedTasks = [];
@@ -19,9 +36,10 @@ const TaskManager = () => {
   }
 
 
+
   //throw and catch block so that if data stored goes corrupted and it threw an error, we could catch it
 
-  const [tasks, setTasks] = useState(savedTasks);
+  const [tasks, dispatch] = useReducer(taskReducer,savedTasks);
   const [showNewTask, setShowNewTask] = useState(false);
   //used to hide the newtask form so that it doesnt stay there
   const [filter, setFilter] = useState("all");
@@ -33,20 +51,16 @@ const TaskManager = () => {
   });
 
   const addTask = (task) => {
-    setTasks((prev) => [...prev, task]);
+    dispatch({type: "ADD_TASK",payload:task});
   };
   //uses the prev callback function and makes a new array using ... and then spreads the previous prev values and then adds the new task at the end of the newly created array
   const toggleTaskCompletion = (id) => {
-    setTasks(
-      (prevTasks) =>
-        prevTasks.map((task) =>
-          task.id === id ? { ...task, completed: !task.completed } : task
-        )
+    dispatch({type:"TOGGLE_TASK",payload:id})
       //maps or loops throught the available tasks and then if the task id mathces, it would flip its value
-    );
+    
   };
   const deleteTask = (id) => {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+    dispatch({type:"DELETE_TASK",payload: id})
   };
   //filters the task using id and then removes it from the current array of tasks
 
