@@ -1,4 +1,5 @@
 import React from 'react'
+import { playSound } from '../utils/sounds'
 
 const TodoHeader = ({setFilter,onNewTaskClick,currentFilter}) => {
   return (
@@ -20,7 +21,7 @@ const TodoHeader = ({setFilter,onNewTaskClick,currentFilter}) => {
         <div className="flex gap-2">
           <button
             onClick={() => setFilter("all")}
-            className={`p-2 rounded ${
+            className={`p-2 rounded-2xl ${
               currentFilter === "all"
                 ? "bg-indigo-600 text-white"
                 : "bg-gray-200 text-black"
@@ -31,7 +32,7 @@ const TodoHeader = ({setFilter,onNewTaskClick,currentFilter}) => {
 
           <button
             onClick={() => setFilter("active")}
-            className={`p-2 rounded ${
+            className={`p-2 rounded-2xl ${
               currentFilter === "active"
                 ? "bg-indigo-600 text-white"
                 : "bg-gray-200 text-black"
@@ -42,7 +43,7 @@ const TodoHeader = ({setFilter,onNewTaskClick,currentFilter}) => {
 
           <button
             onClick={() => setFilter("completed")}
-            className={`p-2 rounded ${
+            className={`p-2 rounded-2xl ${
               currentFilter === "completed"
                 ? "bg-indigo-600 text-white"
                 : "bg-gray-200 text-black"
@@ -53,8 +54,13 @@ const TodoHeader = ({setFilter,onNewTaskClick,currentFilter}) => {
         </div>
 
  <div className="flex justify-center sm:justify-end">
+  
       
-        <button onClick={onNewTaskClick}  className='text-white font-mono p-2 rounded-lg hover:shadow 2x1 hover:bg-indigo-500'
+        <button onClick={()=>{onNewTaskClick();
+          playSound("newtask");
+        }
+          
+        }  className='text-white font-mono p-2 rounded-lg hover:shadow 2x1 hover:bg-indigo-500'
         >
           
           New Task</button>

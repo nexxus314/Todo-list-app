@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Cards from "./Cards";
+import { playSound } from "../utils/sounds";
 //use usestate with newTask
 const NewTask = ({addTask,onClose}) => {
   const [newTask, setNewTask] = useState({
@@ -59,6 +60,7 @@ const NewTask = ({addTask,onClose}) => {
           />
           <div className="flex justify-center sm:justify-end">
           <button
+          onChange={playSound("submit")}
             type="submit"
             className="border-none font-semibold shadow-2xl text-xs text-white bg-indigo-400 p-3 rounded-lg font-mono hover:bg-indigo-800"
           >

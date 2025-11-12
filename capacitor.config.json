@@ -1,0 +1,15 @@
+{
+  "appId": "com.nexxus314.app",
+  "appName": "ToDo",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3000,
+      "launchAutoHide": true,
+      "backgroundColor": "#6366F1",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true
+    }
+  }
+}
