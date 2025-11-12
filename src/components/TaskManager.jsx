@@ -2,6 +2,8 @@ import NewTask from "./NewTask";
 import TaskInput from "./TaskInput";
 import TodoHeader from "./TodoHeader";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 import React from "react";
 
@@ -63,9 +65,17 @@ const TaskManager = () => {
         setFilter={setFilter}
         currentFilter={filter}
       />
-      {showNewTask && (
+      <AnimatePresence>
+      {showNewTask && (<motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+    >
         <NewTask addTask={addTask} onClose={() => setShowNewTask(false)} />
+          </motion.div>
       )}
+      </AnimatePresence>
       <TaskInput
         tasks={filteredTasks}
         toggleTaskCompletion={toggleTaskCompletion}

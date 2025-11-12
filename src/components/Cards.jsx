@@ -1,12 +1,18 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Cards = ({ children }) => {
   return (
-    <div class=" bg-white border border-gray-200 shadow-2xs rounded-xl 
-    gap-4 m-5 p-4 md:p-8 w-1/6 transform transition-transform duration-300 
-    hover:scale-105 hover:shadow-xl w-xs">
+    <motion.div
+      whileHover={{ scale: 1.05 }} // bounce slightly on hover
+      whileTap={{ scale: 0.95 }} // compress slightly when clicked
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="bg-white border border-gray-200 rounded-xl 
+                 m-5 p-6 w-64 shadow-md 
+                 transform hover:shadow-xl transition-shadow duration-300"
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
